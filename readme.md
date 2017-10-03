@@ -56,7 +56,7 @@ The rest of the header contains directives in any order:
 
 * `(little|big) endian` - declare an endianness for the binary data
 * `attribute TYPE NAME` - declare a GLSL vertex attribute NAME as TYPE
-* `\d+ vertex ITYPE` - declare the number of vertices
+* `\d+ vertex` - declare the number of vertices
 * `\d+ edge ITYPE` - declare the number of edges
 * `\d+ triangle ITYPE` - declare the number of triangles
 * `// COMMENT` - include a comment
@@ -109,7 +109,7 @@ sessions are brief and user patience is low.
 
 [PLY]: http://paulbourke.net/dataformats/ply/
 
-## why not [OBJ][]
+## why not [OBJ][]?
 
 * pre-defined set of allowed attributes: v, vt, vn, vp
 * prescribes 3d/4d vertex positions
