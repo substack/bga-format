@@ -117,3 +117,14 @@ sessions are brief and user patience is low.
 * face attributes mean a renderer needs to split vertices
 
 [OBJ]: https://en.wikipedia.org/wiki/Wavefront_.obj_file
+
+## why not [glTF][]?
+
+[glTF][] has a representation for setting buffers into a file with offset and
+stride, but it has a lot of other features and assumptions that you might not
+want:
+
+* meshes are coupled to the material system
+* format specifies materials, cameras, figure rigging, and animation
+
+[glTF]: https://raw.githubusercontent.com/KhronosGroup/glTF/master/specification/2.0/figures/gltfOverview-2.0.0.png
