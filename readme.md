@@ -6,7 +6,7 @@ BGA files describe a mesh in a binary format suitable for rendering on the GPU
 with minimal processing or parsing.
 
 file format version: 1.0
-document version: 1.0.1
+document version: 1.0.2
 
 # example
 
@@ -131,7 +131,8 @@ want:
 
 # benchmarks
 
-using 3d models from https://nasa3d.arc.nasa.gov/
+This benchmark parses public domain 3d models from https://nasa3d.arc.nasa.gov/
+in a web browser.
 
 ```
 Gemini.bga      3.2 ms     0.4 ms     0.5 ms     0.3 ms     0.3 ms
@@ -150,6 +151,8 @@ Z2.bga          2.2 ms     0.3 ms     0.4 ms     0.3 ms     0.5 ms
 Z2.json       108.7 ms   108.2 ms   104.9 ms   108.1 ms   112.2 ms
 Z2.obj        203.8 ms   201.9 ms   202.2 ms   221.3 ms   203.9 ms
 ```
+
+[source](https://git.scuttlebot.io/%25KiJRuIqofRa9G%2BT4empthx7Nue8TDolkfCzq9rHiIfc%3D.sha256/blob/ea5f47917b3d9cc4cf44689e5a7cc459356a0f25/bench/main.js)
 
 # software libraries
 
