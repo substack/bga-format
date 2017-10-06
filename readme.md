@@ -6,7 +6,7 @@ BGA files describe a mesh in a binary format suitable for rendering on the GPU
 with minimal processing or parsing.
 
 file format version: 1.0
-document version: 1.0.0
+document version: 1.0.1
 
 # example
 
@@ -150,4 +150,11 @@ Z2.bga          2.2 ms     0.3 ms     0.4 ms     0.3 ms     0.5 ms
 Z2.json       108.7 ms   108.2 ms   104.9 ms   108.1 ms   112.2 ms
 Z2.obj        203.8 ms   201.9 ms   202.2 ms   221.3 ms   203.9 ms
 ```
+
+# software libraries
+
+javascript:
+
+* [create-bga-mesh](https://git.scuttlebot.io/%25v9llERHzFn0rkZsXpssxo8FO2YxqSSdabrHTPxkPWm0=.sha256) (generator)
+* [parse-bga-mesh](https://git.scuttlebot.io/%25KiJRuIqofRa9G+T4empthx7Nue8TDolkfCzq9rHiIfc=.sha256) (parser)
 
