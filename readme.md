@@ -10,7 +10,7 @@ document version: 1.0.2
 
 # example
 
-This example describes a triangular prism.
+This example describes a triangular pyramid.
 
 The data section is shown as commented text for convenience, but in the real
 file this section would be binary.
