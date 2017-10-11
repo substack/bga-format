@@ -16,13 +16,15 @@ The data section is shown as commented text for convenience, but in the real
 file this section would be binary.
 
 ```
-BGA 1.0\n
+BGA 2.0\n
 little endian\n
-attribute vec3 position\n
-attribute vec4 color\n
+vec3 vertex.position\n
+vec4 vertex.color\n
+uint32 edge.cell[2]\n
+uint32 triangle.cell[3]\n
 4 vertex\n
-6 edge uint32\n
-4 triangle uint32\n
+6 edge\n
+4 triangle\n
 \n
 -1.0 -1.0 +1.0      // vertex 0 position (float32 x 3)
 +1.0 +0.0 +0.0 +1.0 // vertex 0 color    (float32 x 4)
@@ -55,18 +57,25 @@ text followed by a new line character `"\n"`.
 The rest of the header contains directives in any order:
 
 * `(little|big) endian` - declare an endianness for the binary data
-* `attribute TYPE NAME` - declare a GLSL vertex attribute NAME as TYPE
-* `\d+ vertex` - declare the number of vertices
-* `\d+ edge ITYPE` - declare the number of edges
-* `\d+ triangle ITYPE` - declare the number of triangles
+* `TYPE BUFNAME.VARNAME([\d+])?` - declare a TYPE in a buffer BUFNAME called
+  VARNAME. Optionally provide a `[n]` field count.
+* `\d+ BUFNAME` - declare the number of records in BUFNAME
 * `// COMMENT` - include a comment
 
 Any unrecognized directives should be ignored.
 
+A statement with a field count such as `uint32 triangle.cell[3]\n` means the
+VARNAME called cell contains 3 contiguous uint32 fields.
+
 The header MUST specify an endianess.
 
-If a vertex, edge, or triangle count is omitted, use a value of 0 for the
-missing count.
+A "record" refers to all the attributes defined for a buffer. The order of
+`TYPE` declarations in the header for each BUFNAME is the same order that each
+record will be laid out in the data section.
+
+If a buffer is alluded to by a `TYPE BUFNAME.VARNAME([\d+])?` declaration but
+there is no `\d+ BUFNAME` count declaration, an implementation should use 0 for
+the count.
 
 Attribute TYPE can be any of these GLSL types:
 
@@ -83,10 +92,11 @@ The header ends with an empty line, just like HTTP.
 
 ## data
 
-The data format consists of vertex attributes, then edges, then triangles.
+The data section consists of each buffer section in the order provided by the
+`\d+ BUFNAME` declarations in the header.
 
-The vertex attributes are stored in a strided fashion for better memory
-locality.
+The attributes for each record are stored in a strided format, where a full
+record is written.
 
 # why
 
@@ -97,6 +107,11 @@ matches.
 
 Loading assets quickly is particularly important on the web, where application
 sessions are brief and user patience is low.
+
+The strided format provides for better memory locality for many use cases.
+
+If you need your data to not be strided, you can achieve a non-strided effect
+using buffers with a single defined type.
 
 ## why not [PLY][]?
 
