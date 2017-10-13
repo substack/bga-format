@@ -5,8 +5,8 @@ This document describes the BGA (Binary GPU Attribute) file format.
 BGA files describe a mesh in a binary format suitable for rendering on the GPU
 with minimal processing or parsing.
 
-file format version: 1.0
-document version: 1.0.2
+file format version: 2.0
+document version: 2.0.0
 
 # example
 
