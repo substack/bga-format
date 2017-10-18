@@ -6,7 +6,7 @@ BGA files describe a mesh in a binary format suitable for rendering on the GPU
 with minimal processing or parsing.
 
 file format version: 2.0
-document version: 2.0.0
+document version: 2.0.1
 
 # example
 
