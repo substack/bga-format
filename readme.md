@@ -26,7 +26,7 @@ uint32 triangle.cell[3]\n
 6 edge\n
 4 triangle\n
 \n
-0 0 0 // 3 padding bytes: 133 bytes to float-aligned 136 bytes
+0 0 0 // 3 padding bytes: 133 bytes to float32-aligned 136 bytes
 -1.0 -1.0 +1.0      // vertex 0 position (float32 x 3)
 +1.0 +0.0 +0.0 +1.0 // vertex 0 color    (float32 x 4)
 +1.0 -1.0 +1.0      // vertex 1 position (float32 x 3)
