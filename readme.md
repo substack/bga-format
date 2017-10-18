@@ -26,6 +26,7 @@ uint32 triangle.cell[3]\n
 6 edge\n
 4 triangle\n
 \n
+0 0 0 // 3 padding bytes: 133 bytes to float-aligned 136 bytes
 -1.0 -1.0 +1.0      // vertex 0 position (float32 x 3)
 +1.0 +0.0 +0.0 +1.0 // vertex 0 color    (float32 x 4)
 +1.0 -1.0 +1.0      // vertex 1 position (float32 x 3)
@@ -33,6 +34,7 @@ uint32 triangle.cell[3]\n
 +0.0 -1.0 -1.0      // vertex 2 position (float32 x 3)
 +0.0 +0.0 +1.0 +1.0 // vertex 2 color    (float32 x 4)
 +0.0 +1.0 +0.0      // vertex 3 position (float32 x 3)
++0.0 +1.0 +1.0 +1.0 // vertex 3 color    (float32 x 4)
 0 1 // edge 0 (uint32 x 2)
 0 2 // edge 1 (uint32 x 2)
 0 3 // edge 2 (uint32 x 2)
@@ -77,26 +79,34 @@ If a buffer is alluded to by a `TYPE BUFNAME.VARNAME([\d+])?` declaration but
 there is no `\d+ BUFNAME` count declaration, an implementation should use 0 for
 the count.
 
-Attribute TYPE can be any of these GLSL types:
+Attribute TYPE can be any of these types:
 
 * float
 * vec2, vec3, vec4
 * mat2, mat3, mat4
-
-ITYPE values are one of:
-
-* uint16
-* uint32
+* uint8, uint16, uint32
+* int8, int16, int32
 
 The header ends with an empty line, just like HTTP.
 
 ## data
 
-The data section consists of each buffer section in the order provided by the
+The data section consists of each buffer subsection in the order provided by the
 `\d+ BUFNAME` declarations in the header.
 
 The attributes for each record are stored in a strided format, where a full
 record is written.
+
+Each buffer subsection must be aligned to the least common multiple of the size
+of the base type with padding bytes. Use 0x00 for each padding byte.
+
+* The size of the base type for float, vector, and matrix types is 4.
+* The size of uint8 and int8 is 1.
+* The size of uint16 and int16 is 2.
+* The size of uint32 and int32 is 4.
+
+Because the size of base types is either 1, 2, or 4, to compute the least common
+multiple you can use `max()` instead of a full LCM implementation.
 
 # why
 
