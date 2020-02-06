@@ -187,12 +187,12 @@ Z2.gltf        61.3 ms    39.6 ms    36.4 ms    40.9 ms    41.0 ms
 Z2.glb         20.5 ms    24.1 ms    19.0 ms    20.9 ms    18.9 ms
 ```
 
-[source](https://git.scuttlebot.io/%25KiJRuIqofRa9G%2BT4empthx7Nue8TDolkfCzq9rHiIfc%3D.sha256/blob/ea5f47917b3d9cc4cf44689e5a7cc459356a0f25/bench/main.js)
+[source](https://github.com/substack/parse-bga-mesh/tree/master/bench/main.js)
 
 # software libraries
 
 javascript:
 
-* [create-bga-mesh](https://git.scuttlebot.io/%25v9llERHzFn0rkZsXpssxo8FO2YxqSSdabrHTPxkPWm0=.sha256) (generator)
-* [parse-bga-mesh](https://git.scuttlebot.io/%25KiJRuIqofRa9G+T4empthx7Nue8TDolkfCzq9rHiIfc=.sha256) (parser)
+* [create-bga-mesh](https://github.com/substack/create-bga-mesh) (generator)
+* [parse-bga-mesh](https://github.com/substack/parse-bga-mesh) (parser)
 
